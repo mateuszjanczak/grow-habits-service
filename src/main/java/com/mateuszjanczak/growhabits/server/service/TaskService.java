@@ -4,8 +4,10 @@ import com.mateuszjanczak.growhabits.server.dto.TaskRequest;
 import com.mateuszjanczak.growhabits.server.entity.Task.Task;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface TaskService {
     List<Task> getTaskList();
     Task saveTask(TaskRequest taskRequest);
+    Optional<Task> getSingleTask(String id);
 }

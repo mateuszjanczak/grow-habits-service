@@ -7,6 +7,7 @@ import com.mateuszjanczak.growhabits.server.service.TaskService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -27,5 +28,10 @@ public class TaskServiceImpl implements TaskService {
         Task task = new Task(taskRequest);
         return taskRepository.save(task);
         //return taskRepository.save(task);
+    }
+
+    @Override
+    public Optional<Task> getSingleTask(String id) {
+        return taskRepository.findById(id);
     }
 }
