@@ -1,6 +1,7 @@
 package com.mateuszjanczak.growhabits.server.entity.Task;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mateuszjanczak.growhabits.server.dto.OptionRequest;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -27,6 +28,11 @@ public class Option {
     public Option(String name, double power) {
         this.name = name;
         this.power = power;
+    }
+
+    public Option(OptionRequest optionRequest) {
+        this.name = optionRequest.getName();
+        this.power = optionRequest.getPower();
     }
 
     public String getId() {
