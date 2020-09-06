@@ -8,7 +8,6 @@ import java.util.Optional;
 
 public interface TaskService {
     List<Task> getTaskList();
-    Task saveTask(TaskRequest taskRequest);
     Task saveTask(Task task);
     Optional<Task> getSingleTask(String id);
 }

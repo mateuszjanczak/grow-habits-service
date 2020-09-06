@@ -24,12 +24,6 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task saveTask(TaskRequest taskRequest) {
-        Task task = new Task(taskRequest);
-        return taskRepository.save(task);
-    }
-
-    @Override
     public Task saveTask(Task task) {
         return taskRepository.save(task);
     }

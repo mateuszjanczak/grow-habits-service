@@ -2,9 +2,9 @@ package com.mateuszjanczak.growhabits.server.entity.Task;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mateuszjanczak.growhabits.server.dto.TaskRequest;
-import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,8 +29,8 @@ public class Task {
     @Column(name = "lockTime")
     private Date lockTime;
 
+    @NotNull
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
     private List<Option> optionList;
 
     public Task() {

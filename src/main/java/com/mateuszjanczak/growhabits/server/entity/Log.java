@@ -3,9 +3,9 @@ package com.mateuszjanczak.growhabits.server.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mateuszjanczak.growhabits.server.entity.Task.Task;
 import com.mateuszjanczak.growhabits.server.entity.Task.Option;
-import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity

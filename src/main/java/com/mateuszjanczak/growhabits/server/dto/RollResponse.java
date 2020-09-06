@@ -1,15 +1,13 @@
 package com.mateuszjanczak.growhabits.server.dto;
 
-import com.mateuszjanczak.growhabits.server.entity.Task.Option;
-
 import java.util.Date;
 
 public class RollResponse {
     private String id;
-    private Option option;
+    private OptionResponse option;
     private Date lockTime;
 
-    public RollResponse(String id, Option option, Date lockTime) {
+    public RollResponse(String id, OptionResponse option, Date lockTime) {
         this.id = id;
         this.option = option;
         this.lockTime = lockTime;
@@ -23,11 +21,11 @@ public class RollResponse {
         this.id = id;
     }
 
-    public Option getOption() {
+    public OptionResponse getOption() {
         return option;
     }
 
-    public void setOption(Option option) {
+    public void setOption(OptionResponse option) {
         this.option = option;
     }
 

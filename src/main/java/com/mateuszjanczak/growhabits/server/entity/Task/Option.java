@@ -1,10 +1,9 @@
 package com.mateuszjanczak.growhabits.server.entity.Task;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mateuszjanczak.growhabits.server.dto.OptionRequest;
-import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Option {

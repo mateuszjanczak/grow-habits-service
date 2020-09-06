@@ -1,5 +1,6 @@
 package com.mateuszjanczak.growhabits.server.service.impl;
 
+import com.mateuszjanczak.growhabits.server.dto.OptionResponse;
 import com.mateuszjanczak.growhabits.server.dto.RollRequest;
 import com.mateuszjanczak.growhabits.server.dto.RollResponse;
 import com.mateuszjanczak.growhabits.server.entity.Task.Option;
@@ -28,14 +29,17 @@ public class RollServiceImpl implements RollService {
         Task task = taskService.getSingleTask(id).orElseThrow(() -> new TaskNotFoundException(id));
 
         double randomNumber = getRandomNumber();
-        Option win = null;
+
+        OptionResponse winOption = null;
         double acc = 0;
+        int segment = 0;
 
         for (Option option : task.getOptionList()) {
             double power = option.getPower();
+            segment++;
 
             if(randomNumber < power + acc) {
-                win = option;
+                winOption = new OptionResponse(option, segment);
                 break;
             }
 
@@ -45,7 +49,7 @@ public class RollServiceImpl implements RollService {
         task.setLockTime(new Date( System.currentTimeMillis() + task.getCooldown() * 1000));
         taskService.saveTask(task);
 
-        return new RollResponse(task.getId(), win, task.getLockTime());
+        return new RollResponse(task.getId(), winOption, task.getLockTime());
     }
 
     private double getRandomNumber() {

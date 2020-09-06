@@ -1,6 +1,7 @@
 package com.mateuszjanczak.growhabits.server.dto;
 
-import com.sun.istack.NotNull;
+
+import javax.validation.constraints.NotNull;
 
 public class RollRequest {
 

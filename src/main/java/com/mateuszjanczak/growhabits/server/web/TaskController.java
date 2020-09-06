@@ -31,7 +31,7 @@ public class TaskController {
     @GetMapping("/test")
     public ResponseEntity<Void> test(){
         TaskRequest taskRequest = new TaskRequest("przykładowy tytuł", 60L, Arrays.asList(new OptionRequest("tak", 50), new OptionRequest("nie", 50)));
-        taskService.saveTask(taskRequest);
+        taskService.saveTask(new Task(taskRequest));
 
         /*Task task = new Task("Example title", new Date(), Arrays.asList(new Option("Yes", 10), new Option("No", 10)));
         taskRepository.save(task);*/
@@ -56,7 +56,7 @@ public class TaskController {
     @CrossOrigin
     @PostMapping("/tasks")
     public ResponseEntity<Task> saveTask(@RequestBody @Valid TaskRequest taskRequest) {
-        Task task = taskService.saveTask(taskRequest);
+        Task task = taskService.saveTask(new Task(taskRequest));
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
 
