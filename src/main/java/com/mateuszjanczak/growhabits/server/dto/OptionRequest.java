@@ -10,12 +10,24 @@ public class OptionRequest {
     @NotNull(message = "Power cannot be null")
     private double power;
 
+    @NotNull(message = "Color cannot be null")
+    private String color;
+
     public OptionRequest() {
     }
 
-    public OptionRequest(String name, double power) {
+    public OptionRequest(String name, double power, String color) {
         this.name = name;
         this.power = power;
+        this.color = color;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getName() {

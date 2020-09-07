@@ -21,17 +21,31 @@ public class Option {
     @Column(name = "power")
     private double power;
 
+    @NotNull
+    @Column(name = "color")
+    private String color;
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     public Option() {
     }
 
-    public Option(String name, double power) {
+    public Option(String name, double power, String color) {
         this.name = name;
         this.power = power;
+        this.color = color;
     }
 
     public Option(OptionRequest optionRequest) {
         this.name = optionRequest.getName();
         this.power = optionRequest.getPower();
+        this.color = optionRequest.getColor();
     }
 
     public String getId() {

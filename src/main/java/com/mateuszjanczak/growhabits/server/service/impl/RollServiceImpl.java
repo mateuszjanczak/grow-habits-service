@@ -5,6 +5,7 @@ import com.mateuszjanczak.growhabits.server.dto.RollRequest;
 import com.mateuszjanczak.growhabits.server.dto.RollResponse;
 import com.mateuszjanczak.growhabits.server.entity.Task.Option;
 import com.mateuszjanczak.growhabits.server.entity.Task.Task;
+import com.mateuszjanczak.growhabits.server.exception.CooldownException;
 import com.mateuszjanczak.growhabits.server.exception.TaskNotFoundException;
 import com.mateuszjanczak.growhabits.server.service.RollService;
 import com.mateuszjanczak.growhabits.server.service.TaskService;
@@ -27,6 +28,8 @@ public class RollServiceImpl implements RollService {
 
         String id = rollRequest.getId();
         Task task = taskService.getSingleTask(id).orElseThrow(() -> new TaskNotFoundException(id));
+
+        if(!isAvailable(task)) throw new CooldownException("Lock time: " + task.getLockTime() + " Cooldown: " + task.getCooldown());
 
         double randomNumber = getRandomNumber();
 
@@ -54,5 +57,10 @@ public class RollServiceImpl implements RollService {
 
     private double getRandomNumber() {
         return ThreadLocalRandom.current().nextDouble(0, 100);
+    }
+
+    private boolean isAvailable(Task task) {
+        Date now = new Date();
+        return now.after(task.getLockTime());
     }
 }
