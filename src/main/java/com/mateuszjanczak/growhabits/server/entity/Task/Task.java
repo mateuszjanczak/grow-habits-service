@@ -40,7 +40,13 @@ public class Task {
         this.title = taskRequest.getTitle();
         this.cooldown = taskRequest.getCooldown();
         this.lockTime = new Date();
-        this.optionList = taskRequest.getOptionRequestList().stream().map(Option::new).collect(Collectors.toList());
+        this.optionList = normalize(taskRequest.getOptionRequestList().stream().map(Option::new).collect(Collectors.toList()));
+    }
+
+    private List<Option> normalize(List<Option> optionList) {
+        double sum = optionList.stream().mapToDouble(Option::getPower).sum() / 100;
+        optionList.forEach(option -> option.setPower(option.getPower() / sum));
+        return optionList;
     }
 
     public String getId() {
