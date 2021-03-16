@@ -1,6 +1,5 @@
 package com.mateuszjanczak.growhabits.server.service.impl;
 
-import com.mateuszjanczak.growhabits.server.dto.TaskRequest;
 import com.mateuszjanczak.growhabits.server.entity.Task.Task;
 import com.mateuszjanczak.growhabits.server.repository.TaskRepository;
 import com.mateuszjanczak.growhabits.server.service.TaskService;
