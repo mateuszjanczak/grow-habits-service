@@ -1,5 +1,5 @@
-# grow-habits-service
-Serwis do przechowywania nawyków
+# Wheel of Fortune - Service
+Serwis do zarządzania taskami na kole fortuny
 
 ### Wymagania
 * JDK 1.8 lub późniejsza
@@ -7,7 +7,7 @@ Serwis do przechowywania nawyków
 ### Pierwsze kroki
 
 #### Krok 1: Sklonuj repozytorium
-`git clone git@github.com:mateuszjanczak/grow-habits-service.git`
+`git clone git@github.com:mateuszjanczak/wheel-of-fortune-service.git`
 
 #### Krok 2: Uruchom aplikację
 `./mvnw spring-boot:run`
